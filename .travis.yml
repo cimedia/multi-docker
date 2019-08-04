@@ -17,7 +17,7 @@ after_success:
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Push those images to docker hub
-  - docker pushcimedia/multi-client
-  - docker pushcimedia/multi-nginx
-  - docker pushcimedia/multi-server
-  - docker pushcimedia/multi-worker
+  - docker push cimedia/multi-client
+  - docker push cimedia/multi-nginx
+  - docker push cimedia/multi-server
+  - docker push cimedia/multi-worker
