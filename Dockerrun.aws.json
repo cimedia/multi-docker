@@ -1,0 +1,36 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions": [
+    {
+      "name": "client",
+      "image": "cimedia/multi-client",
+      "hastname": "client",
+      "essential": false
+    },
+    {
+      "name": "server",
+      "image": "cimedia/multi-server",
+      "hastname": "api",
+      "essential": false
+    },
+    {
+      "name": "worker",
+      "image": "cimedia/multi-worker",
+      "hastname": "worker",
+      "essential": false
+    },
+    {
+      "name": "nginx",
+      "image": "cimedia/multi-nginx",
+      "hostname": "nginx",
+      "essential": true,
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 80
+        }
+      ],
+      "links": ["client", "server"]
+    }
+  ]
+}

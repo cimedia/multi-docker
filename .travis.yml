@@ -21,3 +21,17 @@ after_success:
   - docker push cimedia/multi-nginx
   - docker push cimedia/multi-server
   - docker push cimedia/multi-worker
+
+deploy:
+  provider: elasticbeanstalk
+  region: eu-west-2
+  app: multi-docker
+  env: MultiDocker-env
+  bucket_name: elasticbeanstalk-eu-west-2-590934922961
+  bucket_path: docker-multi
+  on:
+    branch: master
+  acces_key_id:
+    secure: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: $AWS_SECRET_KEY
